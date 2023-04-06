@@ -1,7 +1,7 @@
 
 {
   "name": "vue-funnel-graph-js-v2",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "",
   "main": "dist/vue-funnel-graph.umd.js",
   "module": "dist/vue-funnel-graph.esm.js",
@@ -56,8 +56,8 @@
     "rollup": "^3.20.2",
     "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-vue": "^5.0.0",
-    "vue": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
     "webpack": "^5.77.0"
   }
 }

@@ -5,9 +5,10 @@ import { formatNumber } from 'funnel-graph-js/src/js/number';
 import { getDefaultColors, generateLegendBackground } from 'funnel-graph-js/src/js/graph';
 import 'funnel-graph-js/src/scss/main.scss';
 import 'funnel-graph-js/src/scss/theme.scss';
-import { openBlock, createElementBlock, normalizeClass, createElementVNode, Fragment, renderList, createVNode, TransitionGroup, withCtx, toDisplayString, createCommentVNode, createTextVNode, Transition, normalizeStyle } from 'vue';
 
-var script = {
+//
+
+    var script = {
         name: 'VueFunnelGraph',
         props: {
             animated: {
@@ -221,150 +222,177 @@ var script = {
         }
     };
 
-var _hoisted_1 = { class: "svg-funnel-js__container" };
-var _hoisted_2 = ["width", "height"];
-var _hoisted_3 = ["id", "gradientTransform"];
-var _hoisted_4 = ["stop-color", "offset"];
-var _hoisted_5 = ["fill", "stroke", "d"];
-var _hoisted_6 = { class: "label__value" };
-var _hoisted_7 = {
-  key: 0,
-  class: "label__title"
-};
-var _hoisted_8 = {
-  key: 1,
-  class: "label__percentage"
-};
-var _hoisted_9 = {
-  key: 2,
-  class: "label__segment-percentages"
-};
-var _hoisted_10 = { class: "segment-percentage__list" };
-var _hoisted_11 = {
-  key: 0,
-  class: "percentage__list-label"
-};
-var _hoisted_12 = {
-  key: 1,
-  class: "percentage__list-label"
-};
-var _hoisted_13 = {
-  key: 0,
-  class: "svg-funnel-js__subLabels"
-};
-var _hoisted_14 = { class: "svg-funnel-js__subLabel--title" };
-
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", {
-    class: normalizeClass(["funnel svg-funnel-js", {'svg-funnel-js--vertical': $props.direction === 'vertical'}])
-  }, [
-    createElementVNode("div", _hoisted_1, [
-      (openBlock(), createElementBlock("svg", {
-        width: $props.width,
-        height: $props.height
-      }, [
-        createElementVNode("defs", null, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList($options.gradientSet, function (colors, index) {
-            return (openBlock(), createElementBlock("linearGradient", {
-              id: ("funnelGradient-" + ((index+1))),
-              key: index,
-              gradientTransform: $options.gradientAngle
-            }, [
-              (openBlock(true), createElementBlock(Fragment, null, renderList(colors.values, function (color, index) {
-                return (openBlock(), createElementBlock("stop", {
-                  "stop-color": color,
-                  offset: $options.offsetColor(index, colors.values.length),
-                  key: index
-                }, null, 8, _hoisted_4))
-              }), 128))
-            ], 8, _hoisted_3))
-          }), 128))
-        ]),
-        (openBlock(true), createElementBlock(Fragment, null, renderList($data.paths, function (path, index) {
-          return (openBlock(), createElementBlock("path", {
-            fill: $options.colorSet[index].fill,
-            stroke: $options.colorSet[index].fill,
-            d: path,
-            key: index
-          }, null, 8, _hoisted_5))
-        }), 128))
-      ], 8, _hoisted_2))
-    ]),
-    createVNode(TransitionGroup, {
-      class: "svg-funnel-js__labels",
-      name: "appear",
-      tag: "div",
-      onEnter: $options.enterTransition,
-      onLeave: $options.leaveTransition
-    }, {
-      default: withCtx(function () { return [
-        (openBlock(true), createElementBlock(Fragment, null, renderList($options.valuesFormatted, function (value, index) {
-          return (openBlock(), createElementBlock("div", {
-            class: normalizeClass(["svg-funnel-js__label", ("label-" + ((index+1)))]),
-            key: $props.labels[index].toLowerCase().split(' ').join('-')
-          }, [
-            createElementVNode("div", _hoisted_6, toDisplayString(value), 1),
-            ($props.labels)
-              ? (openBlock(), createElementBlock("div", _hoisted_7, toDisplayString($props.labels[index]), 1))
-              : createCommentVNode("", true),
-            ($props.displayPercentage && $options.percentages()[index] !== 100)
-              ? (openBlock(), createElementBlock("div", _hoisted_8, toDisplayString($options.percentages()[index]) + "% ", 1))
-              : createCommentVNode("", true),
-            ($options.is2d())
-              ? (openBlock(), createElementBlock("div", _hoisted_9, [
-                  createElementVNode("ul", _hoisted_10, [
-                    (openBlock(true), createElementBlock(Fragment, null, renderList($props.subLabels, function (subLabel, j) {
-                      return (openBlock(), createElementBlock("li", { key: j }, [
-                        createTextVNode(toDisplayString(subLabel) + ": ", 1),
-                        ($props.subLabelValue === 'percent')
-                          ? (openBlock(), createElementBlock("span", _hoisted_11, toDisplayString($options.twoDimPercentages()[index][j]) + "%", 1))
-                          : (openBlock(), createElementBlock("span", _hoisted_12, toDisplayString($props.values[index][j] | _ctx.format), 1))
-                      ]))
-                    }), 128))
-                  ])
-                ]))
-              : createCommentVNode("", true)
-          ], 2))
-        }), 128))
-      ]; }),
-      _: 1
-    }, 8, ["onEnter", "onLeave"]),
-    createVNode(Transition, {
-      name: "fade",
-      onEnter: $options.enterTransition,
-      onLeave: $options.leaveTransition
-    }, {
-      default: withCtx(function () { return [
-        ($options.is2d())
-          ? (openBlock(), createElementBlock("div", _hoisted_13, [
-              (openBlock(true), createElementBlock(Fragment, null, renderList($props.subLabels, function (subLabel, index) {
-                return (openBlock(), createElementBlock("div", {
-                  class: normalizeClass(("svg-funnel-js__subLabel svg-funnel-js__subLabel-" + ((index + 1)))),
-                  key: index
-                }, [
-                  createElementVNode("div", {
-                    class: "svg-funnel-js__subLabel--color",
-                    style: normalizeStyle($options.subLabelBackgrounds(index))
-                  }, null, 4),
-                  createElementVNode("div", _hoisted_14, toDisplayString(subLabel), 1)
-                ], 2))
-              }), 128))
-            ]))
-          : createCommentVNode("", true)
-      ]; }),
-      _: 1
-    }, 8, ["onEnter", "onLeave"])
-  ], 2))
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
 }
 
-script.render = render;
-script.__scopeId = "data-v-409b8995";
+var isOldIE = typeof navigator !== 'undefined' &&
+    /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+function createInjector(context) {
+    return function (id, style) { return addStyle(id, style); };
+}
+var HEAD;
+var styles = {};
+function addStyle(id, css) {
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
+    if (!style.ids.has(id)) {
+        style.ids.add(id);
+        var code = css.source;
+        if (css.map) {
+            // https://developer.chrome.com/devtools/docs/javascript-debugging
+            // this makes source maps inside style tags work properly in Chrome
+            code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
+            // http://stackoverflow.com/a/26603875
+            code +=
+                '\n/*# sourceMappingURL=data:application/json;base64,' +
+                    btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
+                    ' */';
+        }
+        if (!style.element) {
+            style.element = document.createElement('style');
+            style.element.type = 'text/css';
+            if (css.media)
+                { style.element.setAttribute('media', css.media); }
+            if (HEAD === undefined) {
+                HEAD = document.head || document.getElementsByTagName('head')[0];
+            }
+            HEAD.appendChild(style.element);
+        }
+        if ('styleSheet' in style.element) {
+            style.styles.push(code);
+            style.element.styleSheet.cssText = style.styles
+                .filter(Boolean)
+                .join('\n');
+        }
+        else {
+            var index = style.ids.size - 1;
+            var textNode = document.createTextNode(code);
+            var nodes = style.element.childNodes;
+            if (nodes[index])
+                { style.element.removeChild(nodes[index]); }
+            if (nodes.length)
+                { style.element.insertBefore(textNode, nodes[index]); }
+            else
+                { style.element.appendChild(textNode); }
+        }
+    }
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"funnel svg-funnel-js",class:{'svg-funnel-js--vertical': _vm.direction === 'vertical'}},[_c('div',{staticClass:"svg-funnel-js__container"},[_c('svg',{attrs:{"width":_vm.width,"height":_vm.height}},[_c('defs',_vm._l((_vm.gradientSet),function(colors,index){return _c('linearGradient',{key:index,attrs:{"id":("funnelGradient-" + ((index+1))),"gradientTransform":_vm.gradientAngle}},_vm._l((colors.values),function(color,index){return _c('stop',{key:index,attrs:{"stop-color":color,"offset":_vm.offsetColor(index, colors.values.length)}})}),1)}),1),_vm._v(" "),_vm._l((_vm.paths),function(path,index){return _c('path',{key:index,attrs:{"fill":_vm.colorSet[index].fill,"stroke":_vm.colorSet[index].fill,"d":path}})})],2)]),_vm._v(" "),_c('transition-group',{staticClass:"svg-funnel-js__labels",attrs:{"name":"appear","tag":"div"},on:{"enter":_vm.enterTransition,"leave":_vm.leaveTransition}},_vm._l((_vm.valuesFormatted),function(value,index){return _c('div',{key:_vm.labels[index].toLowerCase().split(' ').join('-'),staticClass:"svg-funnel-js__label",class:("label-" + ((index+1)))},[_c('div',{staticClass:"label__value"},[_vm._v(_vm._s(value))]),_vm._v(" "),(_vm.labels)?_c('div',{staticClass:"label__title"},[_vm._v(_vm._s(_vm.labels[index]))]):_vm._e(),_vm._v(" "),(_vm.displayPercentage && _vm.percentages()[index] !== 100)?_c('div',{staticClass:"label__percentage"},[_vm._v("\n                "+_vm._s(_vm.percentages()[index])+"%\n            ")]):_vm._e(),_vm._v(" "),(_vm.is2d())?_c('div',{staticClass:"label__segment-percentages"},[_c('ul',{staticClass:"segment-percentage__list"},_vm._l((_vm.subLabels),function(subLabel,j){return _c('li',{key:j},[_vm._v("\n                        "+_vm._s(subLabel)+":\n                        "),(_vm.subLabelValue === 'percent')?_c('span',{staticClass:"percentage__list-label"},[_vm._v(_vm._s(_vm.twoDimPercentages()[index][j])+"%")]):_c('span',{staticClass:"percentage__list-label"},[_vm._v(_vm._s(_vm._f("format")(_vm.values[index][j])))])])}),0)]):_vm._e()])}),0),_vm._v(" "),_c('transition',{attrs:{"name":"fade"},on:{"enter":_vm.enterTransition,"leave":_vm.leaveTransition}},[(_vm.is2d())?_c('div',{staticClass:"svg-funnel-js__subLabels"},_vm._l((_vm.subLabels),function(subLabel,index){return _c('div',{key:index,class:("svg-funnel-js__subLabel svg-funnel-js__subLabel-" + ((index + 1)))},[_c('div',{staticClass:"svg-funnel-js__subLabel--color",style:(_vm.subLabelBackgrounds(index))}),_vm._v(" "),_c('div',{staticClass:"svg-funnel-js__subLabel--title"},[_vm._v(_vm._s(subLabel))])])}),0):_vm._e()])],1)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = function (inject) {
+    if (!inject) { return }
+    inject("data-v-52d787cd_0", { source: ".appear-enter-active[data-v-52d787cd],.appear-leave-active[data-v-52d787cd]{transition:all .7s ease-in-out}.appear-enter-to[data-v-52d787cd],.appear-leave[data-v-52d787cd]{max-width:100%;max-height:100%;opacity:1}.appear-enter[data-v-52d787cd],.appear-leave-to[data-v-52d787cd]{max-width:0;max-height:0;opacity:0}.fade-enter-active[data-v-52d787cd],.fade-leave-active[data-v-52d787cd]{transition:all .3s ease}.fade-enter-to[data-v-52d787cd],.fade-leave[data-v-52d787cd]{opacity:1}.fade-enter[data-v-52d787cd],.fade-leave-to[data-v-52d787cd]{opacity:0}", map: undefined, media: undefined });
+
+  };
+  /* scoped */
+  var __vue_scope_id__ = "data-v-52d787cd";
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    createInjector,
+    undefined,
+    undefined
+  );
 
 /* eslint-disable import/prefer-default-export */
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    VueFunnelGraph: script
+    VueFunnelGraph: __vue_component__
 });
 
 // Import vue components
@@ -395,4 +423,4 @@ if (GlobalVue) {
   GlobalVue.use(plugin);
 }
 
-export { script as VueFunnelGraph, plugin as default };
+export { __vue_component__ as VueFunnelGraph, plugin as default };
