@@ -1,0 +1,63 @@
+
+{
+  "name": "vue-funnel-graph-js",
+  "version": "0.1.8",
+  "description": "",
+  "main": "dist/vue-funnel-graph.umd.js",
+  "module": "dist/vue-funnel-graph.esm.js",
+  "unpkg": "dist/vue-funnel-graph.min.js",
+  "browser": {
+    "./sfc": "src/lib-components/vue-funnel-graph.vue"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "!src/lib-dev.vue"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greghub/vue-funnel-graph-js.git"
+  },
+  "licence": "MIT",
+  "keywords": [
+    "funnel",
+    "chart",
+    "graph",
+    "funnel-chart",
+    "funnel-graph",
+    "svg-funnel-chart",
+    "svg-funnel-graph",
+    "vue",
+    "vue-funnel-graph",
+    "vue-funnel-chart",
+    "vue-graph",
+    "vue-plot",
+    "vue-funnel"
+  ],
+  "scripts": {
+    "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
+    "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.mjs --format umd --file dist/vue-funnel-graph.umd.js",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.mjs --format es --file dist/vue-funnel-graph.esm.js",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.mjs --format iife --file dist/vue-funnel-graph.min.js"
+  },
+  "dependencies": {
+    "@tweenjs/tween.js": "^17.4.0",
+    "funnel-graph-js": "^1.4.1",
+    "polymorph-js": "^0.2.4",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-buble": "^1.0.2",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
+    "cross-env": "^5.2.1",
+    "minimist": "^1.2.0",
+    "rollup": "^3.20.2",
+    "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "vue": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.77.0"
+  }
+}

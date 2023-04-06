@@ -1,0 +1,27 @@
+.appear-enter-active[data-v-409b8995], .appear-leave-active[data-v-409b8995] {
+  transition: all 0.7s ease-in-out;
+}
+
+.appear-enter-to[data-v-409b8995], .appear-leave[data-v-409b8995] {
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 1;
+}
+
+.appear-enter[data-v-409b8995], .appear-leave-to[data-v-409b8995] {
+  max-width: 0;
+  max-height: 0;
+  opacity: 0;
+}
+
+.fade-enter-active[data-v-409b8995], .fade-leave-active[data-v-409b8995] {
+  transition: all 0.3s ease;
+}
+
+.fade-enter-to[data-v-409b8995], .fade-leave[data-v-409b8995] {
+  opacity: 1;
+}
+
+.fade-enter[data-v-409b8995], .fade-leave-to[data-v-409b8995] {
+  opacity: 0;
+}
